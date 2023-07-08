@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weego 社群實作</title>
+</head>
+<body>
+    <h2>Weego社群註冊</h2>
+    <form th:action="@{/register}" method="post">
+        <div>
+            <label for="username">手機號碼:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <input type="submit" value="Register">
+        </div>
+    </form>
+</body>
+</html>
