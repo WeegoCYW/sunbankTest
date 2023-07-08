@@ -6,6 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
 
 
 @Controller
@@ -22,7 +25,7 @@ public class SpringBootHello {
 	}
 	
 	@GetMapping("/register")
-    public String showRegistrationForm(Model model) {
+    public String showRegistPage(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
@@ -34,7 +37,8 @@ public class SpringBootHello {
     }
     
     @GetMapping("/login")
-    public String showLoginPage() {
+    public String showLoginPage(Model model) {
+    	model.addAttribute("user", new User());
     	//
         return "login";
     }
@@ -43,6 +47,14 @@ public class SpringBootHello {
     public String processLoginForm(@ModelAttribute("user") User user) {
         // 在這裡處理用戶登入驗證
         return "redirect:/index";
+    }
+    
+    
+    @GetMapping("/index")
+    public String showIndexPage(Model model) {
+    	model.addAttribute("user", new User());
+    	//
+        return "index";
     }
 
 }

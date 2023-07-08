@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weego 社群系統</title>
+</head>
+<body>
+    <h2>Weego 社群系統</h2>
+    
+    <!--<div th:if="${#request.isUserInRole('ROLE_USER')}">-->
+        <form action="/post" method="post">
+            <button type="submit">發文</button>
+        </form>
+        <form action="/comment" method="post">
+            <button type="submit">留言</button>
+        </form>
+    <!--</div>-->
+    
+    <form th:action="@{/login}" method="get">
+        <button type="submit">登出</button>
+    </form>
+</body>
+</html>
