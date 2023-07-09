@@ -1,6 +1,9 @@
 package com.example.demo;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import com.example.demo.entity.User;
+//import com.example.demo.User
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.repository.UserRepository;
+
 
 @Controller
 public class SpringBootHello {
+	
+	@Autowired
+    private UserRepository userRepository;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -33,6 +41,7 @@ public class SpringBootHello {
     @PostMapping("/register")
     public String processRegistForm(@ModelAttribute("user") User user) {
         // 在這裡處理用戶註冊邏輯
+    	userRepository.save(user);
         return "redirect:/login";
     }
     
